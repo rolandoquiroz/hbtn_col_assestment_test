@@ -15,7 +15,7 @@ class PserTest(TestCase):
             email='peter@example.com', company='Big Co.'
             )
 
-    def test_user_breed(self):
+    def test_user_email(self):
         user_maria = User.objects.get(name='Maria')
         user_pedro = User.objects.get(name='Pedro')
         self.assertEqual(
