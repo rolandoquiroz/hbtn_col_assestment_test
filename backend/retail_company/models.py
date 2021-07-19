@@ -23,5 +23,8 @@ class User(models.Model):
         blank=True,
         default="")
 
+    def get_email(self):
+        return f"{self.name} has {self.email} as email."
+
     def __str__(self):
         return f"{self.name} {self.last_name}"
