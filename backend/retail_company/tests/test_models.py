@@ -2,8 +2,8 @@ from django.test import TestCase
 from retail_company.models import User
 
 
-class PserTest(TestCase):
-    """ Test module for Pser model """
+class UserModelTest(TestCase):
+    """ Test module for User model """
 
     def setUp(self):
         User.objects.create(
