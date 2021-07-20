@@ -35,9 +35,15 @@ def get_update_delete_user(request, pk):
     if request.method == 'GET':
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
     # update details of a single user
     elif request.method == 'PUT':
-        return Response({})
+        serializer = UserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     # delete a single user
     elif request.method == 'DELETE':
         return Response({})
