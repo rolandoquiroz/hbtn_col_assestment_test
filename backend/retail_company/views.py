@@ -46,7 +46,8 @@ def get_update_delete_user(request, pk):
 
     # delete a single user
     elif request.method == 'DELETE':
-        return Response({})
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET'])
