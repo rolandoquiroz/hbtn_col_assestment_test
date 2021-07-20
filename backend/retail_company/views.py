@@ -1,7 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from retail_company import serializers
 from retail_company.models import User
 from retail_company.serializers import UserSerializer
 
@@ -54,4 +53,6 @@ def get_update_delete_user(request, pk):
 def get_users(request):
     # get all users
     if request.method == 'GET':
-        return Response({})
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
