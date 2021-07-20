@@ -33,7 +33,8 @@ def get_update_delete_user(request, pk):
 
     # get details of a single user
     if request.method == 'GET':
-        return Response({})
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
     # update details of a single user
     elif request.method == 'PUT':
         return Response({})

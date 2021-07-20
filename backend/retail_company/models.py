@@ -20,8 +20,7 @@ class User(models.Model):
     company = models.CharField(
         verbose_name='User company',
         max_length=255,
-        blank=True,
-        default="")
+        blank=True)
 
     def get_email(self):
         return f"{self.name} has {self.email} as email."
