@@ -43,3 +43,37 @@ class CreateNewUserTest(TestCase):
             content_type="application/json"
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
+class GetSingleUserTest(TestCase):
+    """ Test module for GET single user API """
+    def setUp(self):
+        self.maria = User.objects.create(
+            name='Maria', last_name='Lopez', government_issued_id='654321',
+            email='maria@it.com', company='It'
+            )
+        self.pedro = User.objects.create(
+            name='Pedro', last_name='Perez', government_issued_id='123654',
+            email='peter@example.com', company='Big Co.'
+            )
+        self.lola = User.objects.create(
+            name='Lola', last_name='Bunny', government_issued_id='458645',
+            email='lola@wb.com', company='Warner Bros.'
+            )
+        self.pedro = User.objects.create(
+            name='John', last_name='Doe', government_issued_id='666666',
+            email='jd@unknown.com', company=''
+            )
+
+    def test_get_valid_single_user(self):
+        response = client.get(
+            reverse('get_update_delete_user', kwargs={'pk': self.lola.pk}))
+        user = User.objects.get(pk=self.lola.pk)
+        serializer = UserSerializer(user)
+        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_invalid_single_user(self):
+        response = client.get(
+            reverse('get_update_delete_user', kwargs={'pk': 666}))
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
