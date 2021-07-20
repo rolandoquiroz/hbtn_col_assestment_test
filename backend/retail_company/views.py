@@ -1,7 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from retail_company import serializers
 from retail_company.models import User
 from retail_company.serializers import UserSerializer
 
@@ -33,17 +32,27 @@ def get_update_delete_user(request, pk):
 
     # get details of a single user
     if request.method == 'GET':
-        return Response({})
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
     # update details of a single user
     elif request.method == 'PUT':
-        return Response({})
+        serializer = UserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     # delete a single user
     elif request.method == 'DELETE':
-        return Response({})
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET'])
 def get_users(request):
     # get all users
     if request.method == 'GET':
-        return Response({})
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
