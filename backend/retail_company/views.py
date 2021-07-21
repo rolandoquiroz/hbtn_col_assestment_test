@@ -17,6 +17,7 @@ def post_user(request):
             'company': request.data.get('company')
         }
         serializer = UserSerializer(data=data)
+        # form validation
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
