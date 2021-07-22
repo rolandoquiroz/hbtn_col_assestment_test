@@ -1,21 +1,21 @@
-from django.conf.urls import url
-from retail_company import views
+from django.urls import path
+from retail_company.views import post_user, get_update_delete_user, get_users
 
 
 urlpatterns = [
-    url(
-        r'^api/v1/users/$',
-        views.post_user,
+    path(
+        route='users/',
+        view=post_user,
         name='post_user'
     ),
-    url(
-        r'^api/v1/users/(?P<pk>[0-9]+)$',
-        views.get_update_delete_user,
+    path(
+        route='users/<int:pk>/',
+        view=get_update_delete_user,
         name='get_update_delete_user'
     ),
-    url(
-        r'^api/v1/users/all$',
-        views.get_users,
+    path(
+        route='users/all/',
+        view=get_users,
         name='get_users'
     ),
 ]
