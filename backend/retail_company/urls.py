@@ -1,7 +1,23 @@
-from django.urls import path
-from retail_company.views import post_user, get_update_delete_user, get_users
+
+from django.urls import include, path
 
 
+urlpatterns = [
+    path(
+        route='users/',
+        view=include('users.urls'),
+        ),
+    path(
+        route='rest-auth/',
+        view=include('rest_auth.urls')
+        ),
+    path(
+        route='rest-auth/registration/',
+        view=include('rest_auth.registration.urls')
+        ),
+]
+
+'''
 urlpatterns = [
     path(
         route='users/',
@@ -15,7 +31,7 @@ urlpatterns = [
     ),
     path(
         route='users/all/',
-        view=get_users,
-        name='get_users'
+        view=include('users.urls')
     ),
 ]
+'''

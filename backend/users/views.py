@@ -1,12 +1,12 @@
-'''
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+# from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view
+# from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from retail_company.models import User
-from retail_company.serializers import UserSerializer
+from users.models import CustomUser
+from users.serializers import CustomUserSerializer
 
-
+'''
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def post_user(request):
@@ -52,14 +52,12 @@ def get_update_delete_user(request, pk):
     elif request.method == 'DELETE':
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
+'''
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def get_users(request):
     # get all users
     if request.method == 'GET':
-        users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
+        users = CustomUser.objects.all()
+        serializer = CustomUserSerializer(users, many=True)
         return Response(serializer.data)
-'''
