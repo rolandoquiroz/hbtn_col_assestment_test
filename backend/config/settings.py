@@ -43,10 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
 
     # Local
     'retail_company',
@@ -149,26 +145,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# django-allauth settings
+# Django Rest Auth settings
 
-
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-SITE_ID = 1
-
-### Django Rest Auth settings
 REST_AUTH_SERIALIZERS = {
-    "LOGIN_SERIALIZER": "users.serializers.CustomLoginSerializer",
-}
-
-REST_AUTH_REGISTER_SERIALIZERS = {
-    "REGISTER_SERIALIZER": "users.serializers.CustomRegisterSerializer",
+    "LOGIN_SERIALIZER": "users.helpers.serializers.CustomLoginSerializer",
 }
 
 REST_FRAMEWORK = {

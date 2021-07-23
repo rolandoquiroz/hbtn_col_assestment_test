@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from users.validators import is_alphanumeric
 from users.managers import CustomUserManager
 
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    # username = None
     email = models.EmailField(
         verbose_name=_('email address'),
         unique=True

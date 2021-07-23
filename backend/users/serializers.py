@@ -29,19 +29,3 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'name', 'last_name', 'gov_id', 'email', 'company'
             )
         extra_kwargs = {}
-
-
-from rest_auth.registration.serializers import RegisterSerializer
-from rest_auth.serializers import LoginSerializer
-
-
-class CustomRegisterSerializer(RegisterSerializer):
-    """Use default serializer except don't user username"""
-
-    username = None
-
-
-class CustomLoginSerializer(LoginSerializer):
-    """Use default serializer except don't user username"""
-
-    username = None

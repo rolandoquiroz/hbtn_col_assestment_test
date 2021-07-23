@@ -11,10 +11,6 @@ urlpatterns = [
         route='rest-auth/',
         view=include('rest_auth.urls')
         ),
-    path(
-        route='rest-auth/registration/',
-        view=include('rest_auth.registration.urls')
-        ),
 ]
 
 '''

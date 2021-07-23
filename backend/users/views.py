@@ -54,6 +54,7 @@ def get_update_delete_user(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 '''
 
+
 @api_view(['GET'])
 def get_users(request):
     # get all users
