@@ -48,9 +48,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     #   or to do validation that requires access to more than a single field:
     #   Cross field validation
 
-    '''
-    def get_email(self):
-        return f"user identified with {self.id} id has {self.email} as email."
-    '''
+    def get_id(self):
+        return f"User identified with email: {self.email} has id: {self.id}."
+
+    def get_name(self):
+        return f"User with email: {self.email} has {self.name} as name."
+
     def __str__(self):
         return f"{self.email}"
