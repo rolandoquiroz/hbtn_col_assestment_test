@@ -1,8 +1,9 @@
+'''
 from django.core.validators import validate_email
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from retail_company.validators import is_alphabetic, is_alphanumeric
-from retail_company.models import User
+from users.validators import is_alphanumeric
+from user.models import CustomUser
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -17,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
         max_length=255,
         validators=[is_alphabetic]
     )
-    government_issued_id = serializers.CharField(
+    gov_id = serializers.CharField(
         max_length=255,
         validators=[
             is_alphanumeric,
@@ -45,3 +46,4 @@ class UserSerializer(serializers.ModelSerializer):
             'name', 'last_name', 'government_issued_id', 'email', 'company'
             )
         extra_kwargs = {}
+'''

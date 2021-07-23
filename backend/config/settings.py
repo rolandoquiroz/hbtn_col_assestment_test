@@ -42,10 +42,11 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'rest_framework.authtoken',
-    'dj_rest_auth',
+    'rest_auth',
 
     # Local
-    'retail_company'
+    'retail_company',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -99,20 +100,21 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.\
-            UserAttributeSimilarityValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.' +
+            'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.\
-            MinimumLengthValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.\
-            CommonPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.\
-            NumericPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -141,6 +143,21 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Django Rest Auth settings
+
+REST_AUTH_SERIALIZERS = {
+    "LOGIN_SERIALIZER": "users.helpers.serializers.CustomLoginSerializer",
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
+
+
+'''
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':
         [
@@ -153,3 +170,5 @@ REST_FRAMEWORK = {
             ],
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
+
+'''
