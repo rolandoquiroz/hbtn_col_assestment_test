@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    'dj_rest_auth', # add log in, log out, and password reset API endpoints.
 
     # Local
     'retail_company',
@@ -152,23 +152,13 @@ REST_AUTH_SERIALIZERS = {
 }
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
-}
-
-
-'''
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES':
-        [
-            'rest_framework.authentication.TokenAuthentication',
-            ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+        ],
     'DEFAULT_AUTHENTICATION_CLASSES':
         [
             'rest_framework.authentication.SessionAuthentication',
-            'rest_framework.authentication.TokenAuthentication'
+            'rest_framework.authentication.TokenAuthentication',
             ],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
-}
-
-'''
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    }
