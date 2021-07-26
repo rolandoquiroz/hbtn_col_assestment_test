@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth', # add log in, log out, and password reset API endpoints.
+    'corsheaders',
 
     # Local
     'retail_company',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -162,3 +164,8 @@ REST_FRAMEWORK = {
             ],
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     }
+
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:3000', # React port
+'http://localhost:8000', # Django port
+)
