@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import include, path
-
+from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import refresh_jwt_token
+from rest_framework_jwt.views import verify_jwt_token
 
 urlpatterns = [
     path(
@@ -18,5 +20,17 @@ urlpatterns = [
     path(
         route='api/v1/',
         view=include('retail_company.urls'),
+        ),
+    path(
+        route='auth-jwt/',
+        view=obtain_jwt_token
+        ),
+    path(
+        route='auth-jwt-refresh/',
+        view=refresh_jwt_token
+        ),
+    path(
+        route='auth-jwt-verify/',
+        view=verify_jwt_token
         ),
 ]

@@ -1,3 +1,4 @@
+from datetime import timedelta
 """
 Django settings for config project.
 
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'rest_framework.authtoken',
-    'dj_rest_auth', # add log in, log out, and password reset API endpoints.
+    'dj_rest_auth',  # add log in, log out, and password reset API endpoints.
     'corsheaders',
 
     # Local
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', 
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'retail_company_db',
+        'NAME': 'retail_company_dev_db',
         'USER': 'administrator',
         'PASSWORD': '12345',
         'HOST': '127.0.0.1',
@@ -159,13 +160,22 @@ REST_FRAMEWORK = {
         ],
     'DEFAULT_AUTHENTICATION_CLASSES':
         [
-            'rest_framework.authentication.SessionAuthentication',
-            'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
             ],
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     }
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-'http://localhost:3000', # React port
-'http://localhost:8000', # Django port
+    'http://127.0.0.1:8080',  # Vue port
+    'http://127.0.0.1:8000',  # Django port
 )
+
+JWT_AUTH = {
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': timedelta(hours=1),
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+}
