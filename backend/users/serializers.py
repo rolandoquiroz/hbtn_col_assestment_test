@@ -1,8 +1,8 @@
 from django.core.validators import validate_email
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from users.validators import is_alphanumeric
-from users.models import CustomUser
+from . validators import is_alphanumeric
+from . models import CustomUser
 
 
 class CustomUserSerializer(serializers.ModelSerializer):

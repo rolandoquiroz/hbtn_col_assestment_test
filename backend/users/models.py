@@ -2,8 +2,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from users.validators import is_alphanumeric
-from users.managers import CustomUserManager
+from . validators import is_alphanumeric
+from . managers import CustomUserManager
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
