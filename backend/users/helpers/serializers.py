@@ -1,4 +1,4 @@
-from dj_rest_auth.serializers import LoginSerializer
+from rest_auth.serializers import LoginSerializer
 
 
 class CustomLoginSerializer(LoginSerializer):
