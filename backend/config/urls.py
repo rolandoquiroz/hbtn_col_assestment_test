@@ -12,14 +12,14 @@ urlpatterns = [
         view=admin.site.urls,
         ),
     path(
-        route='token/both/',
+        route='token/access-refresh/',
         view=TokenObtainPairView.as_view(),
-        name='token_obtain_pair'
+        name='token_obtain_access_refresh'
         ),
     path(
-        route='token/access/',
+        route='token/refresh/',
         view=TokenRefreshView.as_view(),
-        name='token_get_access'
+        name='token_get_refresh'
         ),
     path(
         route='api/v1/',
