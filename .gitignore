@@ -1,6 +1,7 @@
 .ipynb_checkpoints/
 .env/
 env/
+.env.*
 .vscode
 .metals
 venv
