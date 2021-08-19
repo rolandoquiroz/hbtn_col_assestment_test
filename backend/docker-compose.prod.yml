@@ -3,7 +3,7 @@
 # docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noinput
 # docker-compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
 # docker-compose -f docker-compose.prod.yml exec db psql --username=hello_django --dbname=hello_django_prod
-# docker volume inspect django-on-docker_postgres_data
+# docker volume inspect backend_postgres_data
 
 
 version: '3.9'
@@ -14,6 +14,8 @@ services:
       context: ./
       dockerfile: Dockerfile.prod
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
     expose:
       - 8000
     env_file:
@@ -30,6 +32,8 @@ services:
 
   nginx:
     build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
     ports:
       - 1337:80
     depends_on:
@@ -37,3 +41,4 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
