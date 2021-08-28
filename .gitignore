@@ -16,6 +16,6 @@ env.sh
 migrations
 *.idea
 *.ipynb
-.python-version
+**/.python-version
 .env.*
 .env.*.*
