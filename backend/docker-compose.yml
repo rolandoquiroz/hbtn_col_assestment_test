@@ -14,6 +14,7 @@ services:
       - 8000:8000
     volumes:
       - ./backend:/backend
+      - ./data/web:/vol/web
     env_file:
       - ./.env.dev
     depends_on:

@@ -19,3 +19,5 @@ migrations
 **/.python-version
 .env.*
 .env.*.*
+
+**/data
