@@ -23,4 +23,4 @@ services:
   db:
     image: postgres:13.4-alpine
     env_file:
-      - ./.env.dev.db
+      - ./.env.dev
