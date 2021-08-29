@@ -1,5 +1,5 @@
 FROM python:3.9.6-alpine3.14
-LABEL maintainer="Rolando Quiroz"
+LABEL maintainer="rolandoquiroz@gmail.com"
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
