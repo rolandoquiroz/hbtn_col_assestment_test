@@ -13,7 +13,7 @@ backend/*/*/*/__pycache__/
 .env/
 .venv/
 venv/
-.env.sample
+.env.*
 
 # Local PostgreSQL data
 data/
