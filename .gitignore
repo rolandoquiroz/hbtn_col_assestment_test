@@ -19,5 +19,6 @@ migrations
 **/.python-version
 .env
 .env.*
+!.env.sample
 
 **/data
