@@ -4,10 +4,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from users.validators import is_alphanumeric
 from user.models import CustomUser
-
-
 class UserSerializer(serializers.ModelSerializer):
-
     name = serializers.CharField(
         min_length=2,
         max_length=255,
@@ -36,9 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
         max_length=255,
         allow_blank=True
     )
-
     # def validate(self, data):
-
     class Meta:
         model = User
         fields = (
